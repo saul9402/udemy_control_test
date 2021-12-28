@@ -1,5 +1,5 @@
 /*
-Template Name: Admin Pro Admin
+Template Name: Monster Admin
 Author: Wrappixel
 Email: niravjoshi87@gmail.com
 File: js
@@ -38,8 +38,8 @@ $("#updateInterval").val(updateInterval).change(function () {
         if (updateInterval < 1) {
             updateInterval = 1;
         }
-        else if (updateInterval > 3000) {
-            updateInterval = 3000;
+        else if (updateInterval > 2000) {
+            updateInterval = 2000;
         }
         $(this).val("" + updateInterval);
     }
@@ -55,7 +55,7 @@ var plot = $.plot("#placeholder", [getRandomData()], {
     , xaxis: {
         show: false
     }
-    , colors: ["#26c6da"]
+    , colors: ["#45b6ab"]
     , grid: {
         color: "#AFAFAF"
         , hoverable: true
@@ -105,7 +105,7 @@ $(document).ready(function () {
                 min: -1.2
                 , max: 1.2
             }
-            , colors: ["#009efb", "#26c6da"]
+            , colors: ["#458ab6", "#45b6ab"]
             , grid: {
                 color: "#AFAFAF"
                 , hoverable: true
@@ -124,7 +124,7 @@ $(document).ready(function () {
         var plotObj = $.plot($("#flot-line-chart"), [{
             data: sin
             , label: "sin(x)"
-        , }, {
+            , }, {
             data: cos
             , label: "cos(x)"
             }], options);
@@ -135,31 +135,29 @@ $(function () {
     var data = [{
         label: "Series 0"
         , data: 10
-        , color: "#4f5467"
+        , color: "#45b6ab"
     , }, {
         label: "Series 1"
         , data: 1
-        , color: "#26c6da"
+        , color: "#99d683"
     , }, {
         label: "Series 2"
-        , data: 3
-        , color: "#009efb"
+        , data: 2
+        , color: "#f96262"
     , }, {
         label: "Series 3"
-        , data: 1
-        , color: "#7460ee"
+        , data: 3
+        , color: "#458ab6"
     , }];
     var plotObj = $.plot($("#flot-pie-chart"), data, {
         series: {
             pie: {
-                innerRadius: 0.5
-                , show: true
+                show: true
             }
         }
         , grid: {
             hoverable: true
         }
-        , color: null
         , tooltip: true
         , tooltipOpts: {
             content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
@@ -205,13 +203,13 @@ $(function () {
     }];
     //
     var plot = $.plot(container, series, {
-        colors: ["#26c6da"]
+        colors: ["#45b6ab"]
         , grid: {
             borderWidth: 0
             , minBorderMargin: 20
             , labelMargin: 10
             , backgroundColor: {
-                colors: ["#fff", "#fff"]
+                colors: ["#fff", "#e4f4f4"]
             }
             , margin: {
                 top: 8
@@ -221,13 +219,13 @@ $(function () {
             , markings: function (axes) {
                 var markings = [];
                 var xaxis = axes.xaxis;
-                for (var x = Math.floor(xaxis.min); x < xaxis.max; x += xaxis.tickSize * 1) {
+                for (var x = Math.floor(xaxis.min); x < xaxis.max; x += xaxis.tickSize * 2) {
                     markings.push({
                         xaxis: {
                             from: x
                             , to: x + xaxis.tickSize
                         }
-                        , color: "#fff"
+                        , color: "rgba(232, 232, 255, 0.2)"
                     });
                 }
                 return markings;
@@ -265,7 +263,7 @@ $(function () {
         , xaxis: {
             mode: "time"
             , timeformat: "%m/%d"
-            , minTickSize: [2, "day"]
+            , minTickSize: [1, "day"]
         }
         , grid: {
             hoverable: true
@@ -286,7 +284,7 @@ $(function () {
     };
     var barData = {
         label: "bar"
-        , color: "#009efb"
+        , color: "#45b6ab"
         , data: [
             [1354521600000, 1000]
             , [1355040000000, 2000]
@@ -297,97 +295,4 @@ $(function () {
         ]
     };
     $.plot($("#flot-bar-chart"), [barData], barOptions);
-});
-// sales bar chart
-$(function () {
-    //some data
-    var d1 = [];
-    for (var i = 0; i <= 10; i += 1) d1.push([i, parseInt(Math.random() * 60)]);
-    var d2 = [];
-    for (var i = 0; i <= 10; i += 1) d2.push([i, parseInt(Math.random() * 40)]);
-    var d3 = [];
-    for (var i = 0; i <= 10; i += 1) d3.push([i, parseInt(Math.random() * 25)]);
-    var ds = new Array();
-    ds.push({
-        label: "Data One"
-        , data: d1
-        , bars: {
-            order: 1
-        }
-    });
-    ds.push({
-        label: "Data Two"
-        , data: d2
-        , bars: {
-            order: 2
-        }
-    });
-    ds.push({
-        label: "Data Three"
-        , data: d3
-        , bars: {
-            order: 3
-        }
-    });
-    var stack = 0
-        , bars = true
-        , lines = true
-        , steps = true;
-    var options = {
-        bars: {
-            show: true
-            , barWidth: 0.2
-            , fill: 1
-        }
-        , grid: {
-            show: true
-            , aboveData: false
-            , labelMargin: 5
-            , axisMargin: 0
-            , borderWidth: 1
-            , minBorderMargin: 5
-            , clickable: true
-            , hoverable: true
-            , autoHighlight: false
-            , mouseActiveRadius: 20
-            , borderColor: '#f5f5f5'
-        }
-        , series: {
-            stack: stack
-        }
-        , legend: {
-            position: "ne"
-            , margin: [0, 0]
-            , noColumns: 0
-            , labelBoxBorderColor: null
-            , labelFormatter: function (label, series) {
-                // just add some space to labes
-                return '' + label + '&nbsp;&nbsp;';
-            }
-            , width: 30
-            , height: 5
-        }
-        , yaxis: {
-            tickColor: '#f5f5f5'
-            , font: {
-                color: '#bdbdbd'
-            }
-        }
-        , xaxis: {
-            tickColor: '#f5f5f5'
-            , font: {
-                color: '#bdbdbd'
-            }
-        }
-        , colors: ["#4F5467", "#009efb", "#26c6da"]
-        , tooltip: true, //activate tooltip
-        tooltipOpts: {
-            content: "%s : %y.0"
-            , shifts: {
-                x: -30
-                , y: -50
-            }
-        }
-    };
-    $.plot($(".sales-bars-chart"), ds, options);
 });

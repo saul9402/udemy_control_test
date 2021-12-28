@@ -187,12 +187,12 @@
 
       $block.data('bs.validator.originalContent') === undefined && $block.data('bs.validator.originalContent', $block.html())
       $block.empty().append(errors)
-      $group.addClass('error')
+      $group.addClass('has-error')
 
       $feedback.length
         && $feedback.removeClass(this.options.feedback.success)
         && $feedback.addClass(this.options.feedback.error)
-        && $group.removeClass('validate')
+        && $group.removeClass('has-success')
     })
   }
 
