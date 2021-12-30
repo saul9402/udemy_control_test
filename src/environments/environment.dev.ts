@@ -2,5 +2,5 @@
 // https://www.itsolutionstuff.com/post/how-to-use-environment-variable-in-angularexample.html
 export const environment = {
   production: true,
-  base_url: 'http://localhost:9980/api'
+  base_url: 'http://localhost:8090/api'
 };

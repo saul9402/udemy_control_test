@@ -1,57 +1,58 @@
 <section id="wrapper" class="login-register">
     <div class="login-box">
         <div class="white-box">
-            <form class="form-horizontal m-t-20" action="index.html">
+            <form class="form-horizontal m-t-20" id="loginform" (ngSubmit)="login()" autocomplete="off"
+                [formGroup]="loginForm">
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <h3>Sign In</h3>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h3>Iniciar sesión</h3>
                     </div>
                 </div>
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control" type="text" required="" placeholder="Username">
+                        <input class="form-control" type="text" required="" placeholder="username"
+                            formControlName="username">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
-                        <input class="form-control" type="password" required="" placeholder="Password">
+                        <input class="form-control" type="password" required="" placeholder="Password"
+                            formControlName="password">
                     </div>
                 </div>
                 <div class="form-group ">
-                    <div class="col-md-5 col-xs-12">
-                        <div class="checkbox checkbox-primary">
-                            <input id="checkbox-signup" type="checkbox">
-                            <label for="checkbox-signup"> Remember me </label>
-                        </div>
+                    <div class="col-md-12 col-xs-12 m-t-5 text-right">
+                        <a routerLink="/" class="text-dark">
+                            <i class="fa fa-lock m-r-5"></i>¿Olvidaste tu contraseña?
+                        </a>
                     </div>
-                    <div class="col-md-7 col-xs-12 m-t-5 text-right"><a href="recoverpw.html" class="text-dark"><i
-                                class="fa fa-lock m-r-5"></i> Forgot your password?</a></div>
                 </div>
                 <div class="form-group text-center m-t-40">
                     <div class="col-xs-12">
                         <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light"
-                            type="submit">Log In</button>
+                            type="submit">Iniciar sesión</button>
                     </div>
                 </div>
                 <div class="form-group m-t-30 m-b-0">
                     <div class="col-sm-12 text-center">
-                        <p>Don't have an account? <a href="register.html" class="text-primary m-l-5"><b>Sign Up</b></a>
+                        <p>¿No tienes una cuenta?
+                            <a routerLink="/register" class="text-primary m-l-5"><b>¡registrate!</b>
+                            </a>
                         </p>
                     </div>
                 </div>
             </form>
         </div>
         <footer class="footer text-center">
-            <div class="social">
+            <!-- <div class="social">
                 <a href="javascript:void(0)" class="btn  btn-twitter" data-toggle="tooltip"
                     data-title="Login with Twitter"> <i aria-hidden="true" class="fa fa-twitter"></i> </a>
                 <a href="javascript:void(0)" class="btn  btn-facebook"> <i aria-hidden="true"
                         class="fa fa-facebook"></i> </a>
                 <a href="javascript:void(0)" class="btn btn-googleplus"> <i aria-hidden="true"
                         class="fa fa-google-plus"></i> </a>
-            </div>
-            2017 © Maple Admin.
+            </div> -->
+            {{year}} @Udemy Control.
         </footer>
     </div>
 </section>

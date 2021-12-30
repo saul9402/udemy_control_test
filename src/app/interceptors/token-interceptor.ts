@@ -16,7 +16,7 @@ export class TokenInterceptor implements HttpInterceptor {
         const token = localStorage.getItem(GlobalPropertiesConstants.PROPERTY_TOKEN) || '';
         const modifiedRequest = token && token !== '' ?
             req.clone({
-                headers: req.headers.set(GlobalPropertiesConstants.AUTH_HEADER, `${GlobalPropertiesConstants.BEARER} ${token}`),
+                headers: req.headers.set(GlobalPropertiesConstants.AUTH_HEADER, `${GlobalPropertiesConstants.AUTH_BEARER} ${token}`),
             }) : req.clone();
         return next.handle(modifiedRequest);
     }

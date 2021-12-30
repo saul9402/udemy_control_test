@@ -38,7 +38,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
@@ -65,9 +65,9 @@
                 "with": "src/environments/environment.prod.ts"
               }
             ],
-            "optimization": true,
+            "optimization": false,
             "outputHashing": "all",
-            "sourceMap": false,
+            "sourceMap": true,
             "extractCss": true,
             "namedChunks": false,
             "extractLicenses": true,
@@ -95,8 +95,12 @@
           "configurations": {
             "production": {
               "browserTarget": "adminpro:build:production"
+            },
+            "development": {
+              "browserTarget": "adminpro:build:dev"
             }
-          }
+          },
+          "defaultConfiguration": "dev"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

@@ -12,12 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
+  year: number = new Date().getFullYear();
+
   public loginForm: FormGroup = this.fb.group({
-    email: [localStorage.getItem('email') || '', [Validators.required, Validators.email]],
-    /*   lastName: ['avila', [Validators.required, Validators.minLength(3)]],
-    userName: ['saul9402', [Validators.required, Validators.minLength(3)]], */
-    password: ['123', [Validators.required, Validators.minLength(3)]],
-    rememberMe: [false]
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(1)]],
+    grant_type: ['password']
   });
 
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService) { }
@@ -26,18 +26,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
-
-    this.userService.login(this.loginForm.value).subscribe(resp => {
-      if (this.loginForm.get('remeberMe').value) {
-        localStorage.setItem('item', this.loginForm.get('email').value);
-      } else {
-        localStorage.removeItem('item');
-      }
-      this.router.navigateByUrl('/');
-    }, err => {
-      Swal.fire('Error', err, 'error');
-    })
+    this.userService.login(this.loginForm.value)
+      .subscribe(resp => {
+        this.router.navigateByUrl('/');
+      }, err => {
+        Swal.fire('Error', err, 'error');
+      })
   }
 
 }
